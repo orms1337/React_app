@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./index.sass";
 import routes from "./routes";
 import { Router, Switch, Route } from "react-router-dom";
 import { history } from "./helpers/history";

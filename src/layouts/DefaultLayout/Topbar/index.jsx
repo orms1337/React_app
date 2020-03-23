@@ -12,7 +12,9 @@ export default class Topbar extends Component {
           <li className="topbar__list__item">
             <Link to="/table">Table</Link>
           </li>
-          <li className="topbar__list__item">About</li>
+          <li className="topbar__list__item">
+            <Link to="/about">About</Link>
+          </li>
         </ul>
       </div>
     );

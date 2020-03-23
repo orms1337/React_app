@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./index.sass";
+
 export default class Table extends Component {
   render() {
     return (
@@ -68,10 +69,10 @@ export default class Table extends Component {
             <div class="table_cell_2 bg_cell">От 4000 р. </div>
           </div>
         </div>
-        <p class="discription_table">&#149Установка происходит на нашем СТО</p>
-        <p class="discription_table">&#149Срок замены: 1-2 дня;</p>
+        <p class="discription_table">Установка происходит на нашем СТО</p>
+        <p class="discription_table">Срок замены: 1-2 дня;</p>
         <p class="discription_table">
-          &#149В стоймость замены входит демонтаж старого агрегата;
+          В стоймость замены входит демонтаж старого агрегата;
         </p>{" "}
       </>
     );
