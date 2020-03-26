@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import InputMask from "react-input-mask";
 import "./index.sass";
+import { Button, Drawer } from "antd";
 
 export default class Form extends Component {
   constructor(props) {
@@ -10,7 +11,20 @@ export default class Form extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  state = { valueName: "", valueTel: "" };
+  state = { valueName: "", valueTel: "", visible: false };
+
+  showDrawer = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  onClose = () => {
+    this.setState({
+      visible: false
+    });
+  };
+
   handleChangeName(event) {
     this.setState({ valueName: event.target.value });
   }
@@ -25,6 +39,22 @@ export default class Form extends Component {
 
   render() {
     return (
+      /*
+        <div>
+          <Button type="primary" onClick={this.showDrawer}>
+            Open
+          </Button>
+          <Drawer
+            title="Basic Drawer"
+            placement="right"
+            closable={false}
+            onClose={this.onClose}
+            visible={this.state.visible}
+          >
+            <span>GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG</span>
+          </Drawer>
+        </div>
+        */
       <form
         className="form_cust"
         name="form"
