@@ -4,6 +4,7 @@ import routes from "./routes";
 import { Router, Switch, Route } from "react-router-dom";
 import { history } from "./helpers/history";
 import DefaultLayout from "./layouts/DefaultLayout";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <Router history={history}>
@@ -18,6 +19,7 @@ function App() {
             />
           ))}
         </Switch>
+        <ToastContainer />
       </DefaultLayout>
     </Router>
   );

@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import InputMask from "react-input-mask";
 import "./index.sass";
-import { Button, Drawer } from "antd";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+import axiosInstance from "../../../helpers/axios";
 
 export default class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChangeName = this.handleChangeName.bind(this);
-    this.handleChangeTel = this.handleChangeTel.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  state = { valueName: "", valueTel: "", visible: false };
+  state = { name: "", tel: "", visible: false };
 
   showDrawer = () => {
     this.setState({
@@ -25,17 +20,24 @@ export default class Form extends Component {
     });
   };
 
-  handleChangeName(event) {
-    this.setState({ valueName: event.target.value });
-  }
-  handleChangeTel(event) {
-    this.setState({ valueTel: event.target.value });
-  }
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
-  handleSubmit(event) {
-    alert("Имя: " + this.state.valueName + " Телефон: " + this.state.valueTel);
+  handleSubmit = async event => {
+    const { name, tel } = this.state;
+    axiosInstance
+      .post(process.env.REACT_APP_BACKEND_URL + "/", {
+        name,
+        phone: tel.trim()
+      })
+      .then(response => {
+        console.log(response.data);
+        toast.success("Ваша заявка отправлена");
+      });
+
     event.preventDefault();
-  }
+  };
 
   render() {
     return (
@@ -61,7 +63,6 @@ export default class Form extends Component {
         method="POST"
         onSubmit={this.handleSubmit}
       >
-        {console.log(this.state.valueName)}
         <fieldset>
           <legend className="cust_legend">Заказать звонок</legend>
           <div>
@@ -71,8 +72,9 @@ export default class Form extends Component {
             <div className="element_form">
               <input
                 type="text"
-                value={this.state.valueName}
-                onChange={this.handleChangeName}
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange}
                 required
               />
             </div>
@@ -84,9 +86,10 @@ export default class Form extends Component {
             <div className="element_form">
               <InputMask
                 mask="+7 999 999 99 99"
+                name="tel"
                 maskChar=" "
                 value={this.state.valueTel}
-                onChange={this.handleChangeTel}
+                onChange={this.handleChange}
                 required
               />
             </div>

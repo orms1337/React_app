@@ -64,7 +64,7 @@ export default class Table extends Component {
           </div>
           <div className="table_row">
             <div className="table_cell_1 bg_cell">
-              Замена КПП (передний привод){" "}
+              Замена КПП (передний привод)
             </div>
             <div className="table_cell_2 bg_cell">От 4000 р. </div>
           </div>
@@ -73,7 +73,7 @@ export default class Table extends Component {
         <p className="discription_table">Срок замены: 1-2 дня;</p>
         <p className="discription_table">
           В стоймость замены входит демонтаж старого агрегата;
-        </p>{" "}
+        </p>
       </>
     );
   }
