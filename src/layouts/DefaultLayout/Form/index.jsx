@@ -6,19 +6,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import axiosInstance from "../../../helpers/axios";
 
 export default class Form extends Component {
-  state = { name: "", tel: "", visible: false };
-
-  showDrawer = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false
-    });
-  };
+  state = { name: "", tel: "" };
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -41,22 +29,6 @@ export default class Form extends Component {
 
   render() {
     return (
-      /*
-        <div>
-          <Button type="primary" onClick={this.showDrawer}>
-            Open
-          </Button>
-          <Drawer
-            title="Basic Drawer"
-            placement="right"
-            closable={false}
-            onClose={this.onClose}
-            visible={this.state.visible}
-          >
-            <span>GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG</span>
-          </Drawer>
-        </div>
-        */
       <form
         className="form_cust"
         name="form"
