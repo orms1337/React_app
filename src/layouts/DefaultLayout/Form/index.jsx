@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import axiosInstance from "../../../helpers/axios";
 
 export default class Form extends Component {
-  state = { name: "", tel: "" };
+  state = { name: "", tel: "", formIsOpen: false };
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -28,7 +28,8 @@ export default class Form extends Component {
   };
 
   render() {
-    return (
+    const { formIsOpen } = this.state;
+    return formIsOpen ? (
       <form
         className="form_cust"
         name="form"
@@ -61,6 +62,12 @@ export default class Form extends Component {
           Заказать
         </button>
       </form>
+    ) : (
+      <button
+        type="button"
+        className="closed_form"
+        onClick={() => this.setState({ formIsOpen: true })}
+      />
     );
   }
 }

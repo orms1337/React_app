@@ -1,27 +1,38 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./index.sass";
 export default class Topbar extends Component {
   render() {
+    const logo = require("../../../assets/logo.png");
     return (
       <div className="topbar">
-        <ul className="topbar__list">
-          <li className="topbar__list__item">
-            <Link className="top_link" to="/">
-              Home page
-            </Link>
-          </li>
-          <li className="topbar__list__item">
-            <Link className="top_link" to="/table">
-              Table
-            </Link>
-          </li>
-          <li className="topbar__list__item">
-            <Link className="top_link" to="/about">
-              About
-            </Link>
-          </li>
-        </ul>
+        <img src={logo} className="logo" />
+        <div className="topbar_buttons">
+          <NavLink
+            className="topbar_buttons__item"
+            exact
+            to="/"
+            activeStyle={{ backgroundColor: "#9A0000" }}
+          >
+            Главная страница
+          </NavLink>
+
+          <NavLink
+            className="topbar_buttons__item"
+            to="/table"
+            activeStyle={{ backgroundColor: "#9A0000" }}
+          >
+            Каталог товаров
+          </NavLink>
+
+          <NavLink
+            className="topbar_buttons__item"
+            to="/about"
+            activeStyle={{ backgroundColor: "#9A0000" }}
+          >
+            Контакты
+          </NavLink>
+        </div>
       </div>
     );
   }
