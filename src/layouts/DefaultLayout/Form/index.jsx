@@ -4,6 +4,8 @@ import "./index.sass";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import axiosInstance from "../../../helpers/axios";
+import styled, { keyframes } from "styled-components";
+import { pulse } from "react-animations";
 
 export default class Form extends Component {
   state = { name: "", tel: "", formIsOpen: false };
@@ -27,7 +29,16 @@ export default class Form extends Component {
     event.preventDefault();
   };
 
+  handleClose = () => {
+    this.setState({ formIsOpen: !this.state.formIsOpen });
+  };
+
   render() {
+    const Pulse = styled.button`
+      animation: 1s ${keyframes`${pulse}`} infinite;
+    `;
+    const closeIcon = require("../../../assets/close.png");
+    const phoneIcon = require("../../../assets/phone.png");
     const { formIsOpen } = this.state;
     return formIsOpen ? (
       <form
@@ -36,6 +47,13 @@ export default class Form extends Component {
         method="POST"
         onSubmit={this.handleSubmit}
       >
+        <button
+          className="close_button"
+          type="button"
+          onClick={this.handleClose}
+        >
+          <img src={closeIcon} alt="" style={{ height: 16, width: 16 }} />
+        </button>
         <legend className="cust_legend">Заказать звонок</legend>
 
         <input
@@ -63,11 +81,9 @@ export default class Form extends Component {
         </button>
       </form>
     ) : (
-      <button
-        type="button"
-        className="closed_form"
-        onClick={() => this.setState({ formIsOpen: true })}
-      />
+      <Pulse className="closed_form" onClick={this.handleClose} type="button">
+        <img src={phoneIcon} alt="" style={{ width: 30, height: 30 }} />
+      </Pulse>
     );
   }
 }
