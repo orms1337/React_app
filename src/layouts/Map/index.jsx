@@ -6,22 +6,18 @@ export default class YandexMap extends Component {
     const mapData = {
       center: [55.054934, 73.249985],
       zoom: 16,
+      controls: ["zoomControl", "fullscreenControl"],
     };
     const mapStyle = {
-      //height: 100,
-      //width: 100,
-      minHeight: 200,
-      maxWidth: 1000,
+      height: 400,
       marginTop: 20,
     };
     return (
       <YMaps>
         <Map
           defaultState={mapData}
-          style={{
-            height: 400,
-            margin: 20,
-          }}
+          style={mapStyle}
+          modules={["control.ZoomControl", "control.FullscreenControl"]}
         >
           <Placemark geometry={[55.054934, 73.249985]} />
         </Map>
