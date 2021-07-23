@@ -22,7 +22,7 @@ export default class Topbar extends Component {
             to="/table"
             activeStyle={{ backgroundColor: "#9A0000" }}
           >
-            Каталог товаров
+            Услуги
           </NavLink>
 
           <NavLink
