@@ -10,9 +10,18 @@ export default class DefaultLayout extends Component {
       <div>
         <Topbar />
 
-        <div>{children}</div>
+        <div
+          style={{
+            marginLeft: "20%",
+            marginRight: "20%",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {children}
+        </div>
         <Form />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
